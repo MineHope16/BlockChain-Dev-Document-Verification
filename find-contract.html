@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Your Contract Address</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin: 20px auto; padding: 20px; }
+        .container { background: #f8f9fa; padding: 20px; border-radius: 10px; }
+        .step { background: white; padding: 15px; margin: 10px 0; border-left: 4px solid #007bff; }
+        .error { background: #f8d7da; color: #721c24; padding: 10px; border-radius: 5px; }
+        .success { background: #d4edda; color: #155724; padding: 10px; border-radius: 5px; }
+        .code { background: #e9ecef; padding: 10px; border-radius: 5px; font-family: monospace; }
+        button { background: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin: 5px; }
+        button:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Find Your Contract Address</h1>
+        
+        <div class="error">
+            <h3>❌ Problem Detected:</h3>
+            <p>Contract not found at: <strong>0xF346aC28A807293Fe57e06Da071FC680ceD7AA0c</strong></p>
+        </div>
+
+        <h2>🛠️ How to Find the Correct Address:</h2>
+
+        <div class="step">
+            <h3>Method 1: Check MetaMask Transaction History</h3>
+            <ol>
+                <li><strong>Open MetaMask</strong></li>
+                <li><strong>Click "Activity" tab</strong></li>
+                <li><strong>Find your contract deployment transaction</strong></li>
+                <li><strong>Click on the transaction</strong></li>
+                <li><strong>Click "View on block explorer"</strong></li>
+                <li><strong>Look for "To:" field</strong> - this is your contract address</li>
+            </ol>
+        </div>
+
+        <div class="step">
+            <h3>Method 2: Check Remix IDE</h3>
+            <ol>
+                <li><strong>Go back to Remix:</strong> <button onclick="window.open('https://remix.ethereum.org', '_blank')">Open Remix</button></li>
+                <li><strong>Go to "Deploy & Run Transactions" tab</strong></li>
+                <li><strong>Look at "Deployed Contracts" section</strong></li>
+                <li><strong>Copy the address</strong> shown there</li>
+            </ol>
+        </div>
+
+        <div class="step">
+            <h3>Method 3: Re-deploy Contract</h3>
+            <ol>
+                <li><strong>Go to Remix IDE</strong></li>
+                <li><strong>Make sure you're on Sepolia network</strong></li>
+                <li><strong>Deploy the contract again</strong></li>
+                <li><strong>Copy the NEW address</strong></li>
+            </ol>
+            <p><strong>Contract Code to Deploy:</strong></p>
+            <div class="code">
+                // SPDX-License-Identifier: GPL-3.0<br>
+                pragma solidity >=0.7.0 &lt;0.9.0;<br><br>
+                contract Verification {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;// Copy from your Contract/Verfication.sol file<br>
+                }
+            </div>
+        </div>
+
+        <div class="step">
+            <h3>Method 4: Check Sepolia Explorer</h3>
+            <p>Search for your wallet address to see all transactions:</p>
+            <button onclick="checkAddress()">🔍 Check My Address on Sepolia</button>
+            <div id="addressResult"></div>
+        </div>
+
+        <h2>🎯 Quick Deploy Guide:</h2>
+        <div class="step">
+            <h3>Step-by-Step Deployment:</h3>
+            <ol>
+                <li><strong>Open Remix:</strong> <button onclick="window.open('https://remix.ethereum.org', '_blank')">remix.ethereum.org</button></li>
+                <li><strong>Create new file:</strong> "Verification.sol"</li>
+                <li><strong>Copy your contract code</strong> from Contract/Verfication.sol</li>
+                <li><strong>Compile:</strong> Solidity Compiler → Compile</li>
+                <li><strong>Deploy:</strong> 
+                    <ul>
+                        <li>Environment: "Injected Provider - MetaMask"</li>
+                        <li>Network: Make sure it shows "Sepolia (11155111)"</li>
+                        <li>Contract: Select "Verification"</li>
+                        <li>Click "Deploy"</li>
+                    </ul>
+                </li>
+                <li><strong>Copy address</strong> from Deployed Contracts section</li>
+                <li><strong>Update your code</strong> with the new address</li>
+            </ol>
+        </div>
+
+        <div class="step">
+            <h3>🔧 Test New Address:</h3>
+            <input type="text" id="testAddress" placeholder="Paste contract address here" style="width: 400px; padding: 8px;">
+            <button onclick="testContractAddress()">Test Address</button>
+            <div id="testResult"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.8.0/dist/web3.min.js"></script>
+    <script>
+        async function checkAddress() {
+            if (typeof window.ethereum !== 'undefined') {
+                try {
+                    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                    const address = accounts[0];
+                    const explorerUrl = `https://sepolia.etherscan.io/address/${address}`;
+                    window.open(explorerUrl, '_blank');
+                    document.getElementById('addressResult').innerHTML = `
+                        <p>✅ Opening explorer for: ${address}</p>
+                        <p>Look for contract deployment transactions!</p>
+                    `;
+                } catch (error) {
+                    document.getElementById('addressResult').innerHTML = `
+                        <p class="error">❌ Error: ${error.message}</p>
+                    `;
+                }
+            } else {
+                document.getElementById('addressResult').innerHTML = `
+                    <p class="error">❌ MetaMask not found!</p>
+                `;
+            }
+        }
+
+        async function testContractAddress() {
+            const address = document.getElementById('testAddress').value.trim();
+            const resultDiv = document.getElementById('testResult');
+            
+            if (!address) {
+                resultDiv.innerHTML = '<p class="error">❌ Please enter an address</p>';
+                return;
+            }
+
+            if (typeof window.ethereum !== 'undefined') {
+                try {
+                    const web3 = new Web3(window.ethereum);
+                    
+                    // Check if address is valid
+                    if (!web3.utils.isAddress(address)) {
+                        resultDiv.innerHTML = '<p class="error">❌ Invalid address format</p>';
+                        return;
+                    }
+
+                    // Check if contract exists
+                    const code = await web3.eth.getCode(address);
+                    if (code === '0x') {
+                        resultDiv.innerHTML = `
+                            <p class="error">❌ No contract at this address</p>
+                            <p>Explorer: <a href="https://sepolia.etherscan.io/address/${address}" target="_blank">Check on Sepolia</a></p>
+                        `;
+                    } else {
+                        resultDiv.innerHTML = `
+                            <p class="success">✅ Contract found!</p>
+                            <p>Code size: ${code.length} characters</p>
+                            <p>Explorer: <a href="https://sepolia.etherscan.io/address/${address}" target="_blank">View on Sepolia</a></p>
+                            <p><strong>This address looks good! Update your App.js with this address.</strong></p>
+                        `;
+                    }
+                } catch (error) {
+                    resultDiv.innerHTML = `<p class="error">❌ Error: ${error.message}</p>`;
+                }
+            } else {
+                resultDiv.innerHTML = '<p class="error">❌ MetaMask not found</p>';
+            }
+        }
+    </script>
+</body>
+</html>

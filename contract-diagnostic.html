@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contract Diagnostic Tool</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 20px auto; padding: 20px; }
+        .container { background: #f8f9fa; padding: 20px; border-radius: 10px; }
+        button { background: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin: 5px; }
+        button:hover { background: #0056b3; }
+        .success { color: #28a745; font-weight: bold; }
+        .error { color: #dc3545; font-weight: bold; }
+        .info { background: #d1ecf1; padding: 15px; border-radius: 5px; margin: 10px 0; }
+        .step { background: white; padding: 15px; margin: 10px 0; border-left: 4px solid #007bff; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Contract Diagnostic Tool</h1>
+        
+        <div class="info">
+            <h3>📋 Current Configuration:</h3>
+            <p><strong>Contract Address:</strong> <span id="contractAddress">Loading...</span></p>
+            <p><strong>Network:</strong> <span id="networkUrl">Loading...</span></p>
+            <p><strong>Explorer:</strong> <span id="explorerUrl">Loading...</span></p>
+        </div>
+
+        <div class="step">
+            <h3>🧪 Diagnostic Tests</h3>
+            <button onclick="testAll()">🚀 Run All Tests</button>
+            <button onclick="testMetaMask()">🦊 Test MetaMask</button>
+            <button onclick="testNetwork()">🌐 Test Network</button>
+            <button onclick="testContract()">📋 Test Contract</button>
+            <button onclick="testCounters()">📊 Test Counters</button>
+        </div>
+
+        <div id="results"></div>
+        
+        <div class="step">
+            <h3>🛠️ Quick Fixes</h3>
+            <button onclick="openRemix()">🔗 Open Remix IDE</button>
+            <button onclick="openExplorer()">🔍 Check Contract on Explorer</button>
+            <button onclick="copyContractCode()">📄 Copy Contract Code</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.8.0/dist/web3.min.js"></script>
+    <script src="js/App.js"></script>
+    <script>
+        let web3;
+        let contract;
+
+        // Display current config
+        document.getElementById('contractAddress').textContent = window.CONTRACT.address;
+        document.getElementById('networkUrl').textContent = window.CONTRACT.network;
+        document.getElementById('explorerUrl').textContent = window.CONTRACT.explore;
+
+        function log(message, type = 'info') {
+            const resultsDiv = document.getElementById('results');
+            const className = type === 'success' ? 'success' : type === 'error' ? 'error' : 'info';
+            resultsDiv.innerHTML += `<div class="${className}" style="margin: 5px 0; padding: 10px; border-radius: 5px; background: ${type === 'success' ? '#d4edda' : type === 'error' ? '#f8d7da' : '#e2e3e5'};">${message}</div>`;
+        }
+
+        async function testMetaMask() {
+            log("🧪 Testing MetaMask...");
+            
+            if (typeof window.ethereum === 'undefined') {
+                log("❌ MetaMask not found!", 'error');
+                return false;
+            }
+            
+            try {
+                const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                if (accounts.length > 0) {
+                    log(`✅ MetaMask connected: ${accounts[0]}`, 'success');
+                    return true;
+                } else {
+                    log("❌ No accounts found", 'error');
+                    return false;
+                }
+            } catch (error) {
+                log(`❌ MetaMask error: ${error.message}`, 'error');
+                return false;
+            }
+        }
+
+        async function testNetwork() {
+            log("🧪 Testing Network...");
+            
+            if (!web3) {
+                web3 = new Web3(window.ethereum);
+            }
+            
+            try {
+                const chainId = await web3.eth.getChainId();
+                const networkId = await web3.eth.net.getId();
+                
+                log(`🌐 Chain ID: ${chainId}`, chainId === 11155111 ? 'success' : 'error');
+                log(`🌐 Network ID: ${networkId}`, 'info');
+                
+                if (chainId === 11155111) {
+                    log("✅ Connected to Sepolia network", 'success');
+                    return true;
+                } else {
+                    log("❌ Wrong network! Please switch to Sepolia", 'error');
+                    return false;
+                }
+            } catch (error) {
+                log(`❌ Network error: ${error.message}`, 'error');
+                return false;
+            }
+        }
+
+        async function testContract() {
+            log("🧪 Testing Contract...");
+            
+            if (!web3) {
+                web3 = new Web3(window.ethereum);
+            }
+            
+            try {
+                // Check if contract exists
+                const code = await web3.eth.getCode(window.CONTRACT.address);
+                if (code === '0x') {
+                    log("❌ No contract deployed at this address!", 'error');
+                    log("💡 Possible solutions:", 'info');
+                    log("   1. Deploy contract using Remix IDE", 'info');
+                    log("   2. Check if address is correct", 'info');
+                    log("   3. Make sure you're on Sepolia network", 'info');
+                    return false;
+                } else {
+                    log("✅ Contract found at address", 'success');
+                    log(`📏 Contract code size: ${code.length} characters`, 'info');
+                    
+                    // Initialize contract
+                    contract = new web3.eth.Contract(window.CONTRACT.abi, window.CONTRACT.address);
+                    log("✅ Contract initialized successfully", 'success');
+                    return true;
+                }
+            } catch (error) {
+                log(`❌ Contract error: ${error.message}`, 'error');
+                return false;
+            }
+        }
+
+        async function testCounters() {
+            log("🧪 Testing Counter Functions...");
+            
+            if (!contract) {
+                log("❌ Contract not initialized", 'error');
+                return false;
+            }
+            
+            try {
+                const accounts = await web3.eth.getAccounts();
+                if (accounts.length === 0) {
+                    log("❌ No accounts available", 'error');
+                    return false;
+                }
+                
+                const userAddress = accounts[0];
+                
+                // Test count_Exporters
+                const exporterCount = await contract.methods.count_Exporters().call({ from: userAddress });
+                log(`✅ Exporter count: ${exporterCount}`, 'success');
+                
+                // Test count_hashes
+                const hashCount = await contract.methods.count_hashes().call({ from: userAddress });
+                log(`✅ Hash count: ${hashCount}`, 'success');
+                
+                return true;
+            } catch (error) {
+                log(`❌ Counter test failed: ${error.message}`, 'error');
+                if (error.message.includes("Returned values aren't valid")) {
+                    log("💡 This usually means:", 'info');
+                    log("   1. Contract is not deployed properly", 'info');
+                    log("   2. Wrong ABI or contract address", 'info');
+                    log("   3. Function doesn't exist in contract", 'info');
+                }
+                return false;
+            }
+        }
+
+        async function testAll() {
+            document.getElementById('results').innerHTML = '';
+            log("🚀 Starting complete diagnostic...", 'info');
+            
+            const metamaskOk = await testMetaMask();
+            const networkOk = await testNetwork();
+            const contractOk = await testContract();
+            const countersOk = contractOk ? await testCounters() : false;
+            
+            log("", 'info'); // spacer
+            if (metamaskOk && networkOk && contractOk && countersOk) {
+                log("🎉 ALL TESTS PASSED! Your setup is working correctly!", 'success');
+            } else {
+                log("⚠️ Some tests failed. Please fix the issues above.", 'error');
+            }
+        }
+
+        function openRemix() {
+            window.open('https://remix.ethereum.org', '_blank');
+        }
+
+        function openExplorer() {
+            window.open(`${window.CONTRACT.explore}/address/${window.CONTRACT.address}`, '_blank');
+        }
+
+        function copyContractCode() {
+            // This would copy the Solidity contract code
+            const contractCode = `// Copy this code to Remix IDE and deploy on Sepolia
+pragma solidity >=0.7.0 <0.9.0;
+
+contract Verification {
+    // ... contract code from Contract/Verfication.sol
+}`;
+            navigator.clipboard.writeText(contractCode);
+            log("📄 Contract template copied to clipboard", 'success');
+        }
+    </script>
+</body>
+</html>
