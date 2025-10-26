@@ -499,7 +499,7 @@ function printUploadInfo(result) {
   );
   $("#contract-address").html(
     `<i class="fa-solid fa-file-contract mx-1"></i> ${truncateAddress(
-      result.to
+      result.transactionHash
     )}`
   );
   $("#time-stamps").html('<i class="fa-solid fa-clock mx-1"></i>' + getTime());
@@ -608,7 +608,10 @@ async function sendHash() {
   if (window.hashedfile.length > 4) {
     await window.contract.methods
       .addDocHash(window.hashedfile, cid)
-      .send({ from: window.userAddress })
+      .send({
+        from: window.userAddress,
+        gas: 16700000
+      })
       .on("transactionHash", function (_hash) {
         $("#note").html(
           `<h5 class="text-info p-1 text-center">Please wait for transaction to be mined...</h5>`
