@@ -1,3 +1,4 @@
+
 //Your IPFS api key in ifura.io
 const projectId = "11293c6b6b424c29884e03f63562d2ab";
 //Your api secret in ifura.io
@@ -7,217 +8,217 @@ window.CONTRACT = {
   network: "https://sepolia.infura.io/v3/11293c6b6b424c29884e03f63562d2ab",
   explore: "https://sepolia.etherscan.io",
   // Your Contract ABI
-  abi:[
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_add",
-				"type": "address"
-			},
-			{
-				"internalType": "string",
-				"name": "_info",
-				"type": "string"
-			}
-		],
-		"name": "add_Exporter",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "bytes32",
-				"name": "hash",
-				"type": "bytes32"
-			},
-			{
-				"internalType": "string",
-				"name": "_ipfs",
-				"type": "string"
-			}
-		],
-		"name": "addDocHash",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_add",
-				"type": "address"
-			},
-			{
-				"internalType": "string",
-				"name": "_newInfo",
-				"type": "string"
-			}
-		],
-		"name": "alter_Exporter",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"stateMutability": "nonpayable",
-		"type": "constructor"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "_exporter",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"internalType": "string",
-				"name": "_ipfsHash",
-				"type": "string"
-			}
-		],
-		"name": "addHash",
-		"type": "event"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_newOwner",
-				"type": "address"
-			}
-		],
-		"name": "changeOwner",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_add",
-				"type": "address"
-			}
-		],
-		"name": "delete_Exporter",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "bytes32",
-				"name": "_hash",
-				"type": "bytes32"
-			}
-		],
-		"name": "deleteHash",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "count_Exporters",
-		"outputs": [
-			{
-				"internalType": "uint16",
-				"name": "",
-				"type": "uint16"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "count_hashes",
-		"outputs": [
-			{
-				"internalType": "uint16",
-				"name": "",
-				"type": "uint16"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "bytes32",
-				"name": "_hash",
-				"type": "bytes32"
-			}
-		],
-		"name": "findDocHash",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			},
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_add",
-				"type": "address"
-			}
-		],
-		"name": "getExporterInfo",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "owner",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	}
-],
+  abi: [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_add",
+          "type": "address"
+        },
+        {
+          "internalType": "string",
+          "name": "_info",
+          "type": "string"
+        }
+      ],
+      "name": "add_Exporter",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "hash",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "string",
+          "name": "_ipfs",
+          "type": "string"
+        }
+      ],
+      "name": "addDocHash",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_add",
+          "type": "address"
+        },
+        {
+          "internalType": "string",
+          "name": "_newInfo",
+          "type": "string"
+        }
+      ],
+      "name": "alter_Exporter",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_exporter",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "_ipfsHash",
+          "type": "string"
+        }
+      ],
+      "name": "addHash",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "changeOwner",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_add",
+          "type": "address"
+        }
+      ],
+      "name": "delete_Exporter",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "_hash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "deleteHash",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "count_Exporters",
+      "outputs": [
+        {
+          "internalType": "uint16",
+          "name": "",
+          "type": "uint16"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "count_hashes",
+      "outputs": [
+        {
+          "internalType": "uint16",
+          "name": "",
+          "type": "uint16"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "_hash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "findDocHash",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_add",
+          "type": "address"
+        }
+      ],
+      "name": "getExporterInfo",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
 };
 //login
 async function connect() {
@@ -238,7 +239,7 @@ async function connect() {
       console.log(selectedAccount);
       window.localStorage.setItem("userAddress", window.userAddress);
       window.location.reload();
-    } catch (error) {}
+    } catch (error) { }
   } else {
     $("#upload_file_button").attr("disabled", true);
     $("#doc-file").attr("disabled", true);
@@ -248,7 +249,7 @@ async function connect() {
 }
 
 window.onload = async () => {
-  if(window.location.href.indexOf("verify.html") > -1){
+  if (window.location.href.indexOf("verify.html") > -1) {
     $("#loader").hide();
     $(".loader-wraper").fadeOut("slow");
 
@@ -277,7 +278,7 @@ window.onload = async () => {
     console.log("Web3 and contract initialized");
     console.log("Contract address:", window.CONTRACT.address);
     console.log("Network URL:", window.CONTRACT.network);
-    
+
     // Validate contract
     try {
       const code = await window.web3.eth.getCode(window.CONTRACT.address);
@@ -290,7 +291,7 @@ window.onload = async () => {
     } catch (error) {
       console.error("Error checking contract:", error);
     }
-    
+
     //checking if user loged in
     if (window.userAddress && window.userAddress.length > 10) {
       console.log("User is logged in, setting up UI...");
@@ -300,11 +301,10 @@ window.onload = async () => {
       $("#loginButton").hide();
       $("#userAddress")
         .html(`<i class="fa-solid fa-address-card mx-2 text-primary"></i>${truncateAddress(
-        window.userAddress
-      )}
-       <a class="text-info" href="${window.CONTRACT.explore}/address/${
-        window.userAddress
-      }" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-square-arrow-up-right text-warning"></i></a>  
+          window.userAddress
+        )}
+       <a class="text-info" href="${window.CONTRACT.explore}/address/${window.userAddress
+          }" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-square-arrow-up-right text-warning"></i></a>  
        </a>`);
 
       //if admin is viewed then show the doc,exporter counters
@@ -382,32 +382,7 @@ function checkURL() {
   verify_Hash();
 }
 // get Sha3 Hash from the file
-async function get_Sha3() {
-  $("#note").html(`<h5 class="text-warning">Hashing Your Document 😴...</h5>`);
-  $("#upload_file_button").attr("disabled", false);
-  console.log("file changed");
-  var file = await document.getElementById("doc-file").files[0];
-  if (file) {
-    var reader = new FileReader();
-    reader.readAsText(file, "UTF-8");
-    reader.onload = async function (evt) {
-      // var SHA256 = new Hashes.SHA256();
-      // = SHA256.hex(evt.target.result);
-      window.hashedfile = await web3.utils.soliditySha3(evt.target.result);
-      console.log(`Document Hash : ${window.hashedfile}`);
-      $("#note").html(
-        `<h5 class="text-center text-info">Document Hashed  😎 </h5>`
-      );
-    };
-    reader.onerror = function (evt) {
-      console.log("error reading file");
-      return false;
-    };
-  } else {
-    window.hashedfile = null;
-    return false;
-  }
-}
+
 
 function print_verification_info(result, is_verified) {
   //Default Image for not Verified Docunets
@@ -490,8 +465,8 @@ async function get_ethBalance() {
       if (err === null) {
         $("#userBalance").html(
           "Balance: <i class='fa-brands fa-gg-circle mx-2 text-danger'></i>" +
-            web3.utils.fromWei(balance).substr(0, 6) +
-            " ETH"
+          web3.utils.fromWei(balance).substr(0, 6) +
+          " ETH"
         );
       } else {
         console.error("Balance error:", err);
@@ -513,9 +488,9 @@ if (window.ethereum) {
 function printUploadInfo(result) {
   $("#transaction-hash").html(
     `<a target="_blank" title="View Transaction at Polygon Scan" href="${window.CONTRACT.explore}/tx/` +
-      result.transactionHash +
-      '"+><i class="fa fa-check-circle font-size-2 mx-1 text-white mx-1"></i></a>' +
-      truncateAddress(result.transactionHash)
+    result.transactionHash +
+    '"+><i class="fa fa-check-circle font-size-2 mx-1 text-white mx-1"></i></a>' +
+    truncateAddress(result.transactionHash)
   );
   $("#file-hash").html(
     `<i class="fa-solid fa-hashtag mx-1"></i> ${truncateAddress(
@@ -524,7 +499,7 @@ function printUploadInfo(result) {
   );
   $("#contract-address").html(
     `<i class="fa-solid fa-file-contract mx-1"></i> ${truncateAddress(
-      result.to
+      result.transactionHash
     )}`
   );
   $("#time-stamps").html('<i class="fa-solid fa-clock mx-1"></i>' + getTime());
@@ -581,11 +556,10 @@ async function getFilebinInfo(filebinUrl, filebinId) {
 }
 
 async function uploadFileToIpfs() {
-  const fileInput = document.getElementById("doc-file"); // Assuming you have an input element with id 'doc-file' for selecting files
-  const file = fileInput.files[0];
+
   const formData = new FormData();
   formData.append("file", file);
-
+  uploadIPFS();
   //for authinticating your request to infura.io
   const auth = "Basic " + btoa(`${projectId}:${projectSecret}`);
 
@@ -612,7 +586,6 @@ async function uploadFileToIpfs() {
     throw error;
   }
 }
-
 async function sendHash() {
   $("#loader").removeClass("d-none");
   $("#upload_file_button").slideUp();
@@ -627,12 +600,18 @@ async function sendHash() {
   // =================================================
   // await getFilebinInfo();
   // await uploadFileToBin();
-  const CID = await uploadFileToIpfs();
-  await uploadFileToIpfs();
+  await createSpace();
+  const cid = await uploadIPFS();
+  const link = `https://${cid}.ipfs.storacha.link`;
+  $("#ipfs-link").html(`
+    <h5 class="text-info p-1 text-center">✅ Uploaded! CID: <b>${cid}</b><br><a href="${link}" target="_blank">View on IPFS</a></h5>`);
   if (window.hashedfile.length > 4) {
     await window.contract.methods
-      .addDocHash(window.hashedfile, CID)
-      .send({ from: window.userAddress })
+      .addDocHash(window.hashedfile, cid)
+      .send({
+        from: window.userAddress,
+        gas: 16700000
+      })
       .on("transactionHash", function (_hash) {
         $("#note").html(
           `<h5 class="text-info p-1 text-center">Please wait for transaction to be mined...</h5>`
@@ -644,7 +623,7 @@ async function sendHash() {
         generateQRCode();
       })
 
-      .on("confirmation", function (confirmationNr) {})
+      .on("confirmation", function (confirmationNr) { })
       .on("error", function (error) {
         console.log(error.message);
         $("#note").html(`<h5 class="text-center">${error.message} 😏</h5>`);
@@ -842,7 +821,7 @@ async function addExporter() {
   }
 
   console.log("Adding exporter:", address, "Info:", info);
-  
+
   $("#loader").removeClass("d-none");
   $("#ExporterBtn").slideUp();
   $("#edit").slideUp();
@@ -923,26 +902,26 @@ async function getExporterInfo() {
 async function getCounters() {
   try {
     console.log("Getting counters from contract:", window.CONTRACT.address);
-    
+
     // Test if contract is accessible first
     const exporterCount = await window.contract.methods
       .count_Exporters()
       .call({ from: window.userAddress });
-    
+
     $("#num-exporters").html(
       `Exporters: <i class="fa-solid fa-building-columns mx-2 text-info"></i>${exporterCount}`
     );
-    
+
     const hashCount = await window.contract.methods
       .count_hashes()
       .call({ from: window.userAddress });
-    
+
     $("#num-hashes").html(
       `Documents: <i class="fa-solid fa-file mx-2 text-warning"></i>${hashCount}`
     );
-    
+
     console.log("Counters loaded successfully - Exporters:", exporterCount, "Hashes:", hashCount);
-    
+
   } catch (error) {
     console.error("Error getting counters:", error);
     $("#num-exporters").html(
@@ -951,7 +930,7 @@ async function getCounters() {
     $("#num-hashes").html(
       `Documents: <span class="text-danger">Error loading</span>`
     );
-    
+
     // Check if it's a contract issue
     if (error.message.includes("Returned values aren't valid")) {
       $("#note").html(
@@ -1001,7 +980,7 @@ async function editExporter() {
           );
         })
 
-        .on("confirmation", function (confirmationNr) {})
+        .on("confirmation", function (confirmationNr) { })
         .on("error", function (error) {
           console.log(error.message);
           $("#note").html(`<h5 class="text-center">${error.message} 👍</h5>`);
