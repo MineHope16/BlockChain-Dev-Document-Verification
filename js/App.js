@@ -4,221 +4,221 @@ const projectId = "11293c6b6b424c29884e03f63562d2ab";
 //Your api secret in ifura.io
 const projectSecret = "4xIw6ZTNntoBEV2XIoeQ7wIYJtWl+7s/oP+WLNzk//Wxg6Nh9pY+NQ";
 window.CONTRACT = {
-  address: "0x8f12448ad5cc0B095c524F2eAD4A24D1f0fDC092",
+  address: "0x426838e0F2A4CDB0d56a811ee4e82300D33b0ccA",
   network: "https://sepolia.infura.io/v3/11293c6b6b424c29884e03f63562d2ab",
   explore: "https://sepolia.etherscan.io",
   // Your Contract ABI
   abi: [
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "_add",
-          "type": "address"
-        },
-        {
-          "internalType": "string",
-          "name": "_info",
-          "type": "string"
-        }
-      ],
-      "name": "add_Exporter",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "bytes32",
-          "name": "hash",
-          "type": "bytes32"
-        },
-        {
-          "internalType": "string",
-          "name": "_ipfs",
-          "type": "string"
-        }
-      ],
-      "name": "addDocHash",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "_add",
-          "type": "address"
-        },
-        {
-          "internalType": "string",
-          "name": "_newInfo",
-          "type": "string"
-        }
-      ],
-      "name": "alter_Exporter",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "stateMutability": "nonpayable",
-      "type": "constructor"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
-          "internalType": "address",
-          "name": "_exporter",
-          "type": "address"
-        },
-        {
-          "indexed": false,
-          "internalType": "string",
-          "name": "_ipfsHash",
-          "type": "string"
-        }
-      ],
-      "name": "addHash",
-      "type": "event"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "_newOwner",
-          "type": "address"
-        }
-      ],
-      "name": "changeOwner",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "_add",
-          "type": "address"
-        }
-      ],
-      "name": "delete_Exporter",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "bytes32",
-          "name": "_hash",
-          "type": "bytes32"
-        }
-      ],
-      "name": "deleteHash",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "count_Exporters",
-      "outputs": [
-        {
-          "internalType": "uint16",
-          "name": "",
-          "type": "uint16"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "count_hashes",
-      "outputs": [
-        {
-          "internalType": "uint16",
-          "name": "",
-          "type": "uint16"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "bytes32",
-          "name": "_hash",
-          "type": "bytes32"
-        }
-      ],
-      "name": "findDocHash",
-      "outputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        },
-        {
-          "internalType": "string",
-          "name": "",
-          "type": "string"
-        },
-        {
-          "internalType": "string",
-          "name": "",
-          "type": "string"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "_add",
-          "type": "address"
-        }
-      ],
-      "name": "getExporterInfo",
-      "outputs": [
-        {
-          "internalType": "string",
-          "name": "",
-          "type": "string"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "owner",
-      "outputs": [
-        {
-          "internalType": "address",
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    }
-  ],
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_add",
+				"type": "address"
+			},
+			{
+				"internalType": "string",
+				"name": "_info",
+				"type": "string"
+			}
+		],
+		"name": "add_Exporter",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "hash",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "string",
+				"name": "_ipfs",
+				"type": "string"
+			}
+		],
+		"name": "addDocHash",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_add",
+				"type": "address"
+			},
+			{
+				"internalType": "string",
+				"name": "_newInfo",
+				"type": "string"
+			}
+		],
+		"name": "alter_Exporter",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "_exporter",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "_ipfsHash",
+				"type": "string"
+			}
+		],
+		"name": "addHash",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_newOwner",
+				"type": "address"
+			}
+		],
+		"name": "changeOwner",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_add",
+				"type": "address"
+			}
+		],
+		"name": "delete_Exporter",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "_hash",
+				"type": "bytes32"
+			}
+		],
+		"name": "deleteHash",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "count_Exporters",
+		"outputs": [
+			{
+				"internalType": "uint16",
+				"name": "",
+				"type": "uint16"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "count_hashes",
+		"outputs": [
+			{
+				"internalType": "uint16",
+				"name": "",
+				"type": "uint16"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "_hash",
+				"type": "bytes32"
+			}
+		],
+		"name": "findDocHash",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_add",
+				"type": "address"
+			}
+		],
+		"name": "getExporterInfo",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
 };
 //login
 async function connect() {
@@ -793,8 +793,20 @@ function truncateAddress(address) {
 }
 
 async function addExporter() {
-  const address = document.getElementById("Exporter-address").value.trim();
-  const info = document.getElementById("info").value.trim();
+ const addressElement = document.querySelector('#userAddress a');
+const href = addressElement?.getAttribute('href');
+
+let fullAddress = null;
+if (href) {
+  const match = href.match(/address\/(0x[a-fA-F0-9]{40})/);
+  if (match) {
+    fullAddress = match[1];
+  }
+}
+ let address= fullAddress;
+ console.log("address is:- ");
+ console.log(address);
+  const info = "Abhishek";
 
   // Address validation
   if (!address || !info) {
@@ -813,12 +825,6 @@ async function addExporter() {
   }
 
   // Check if trying to add own address
-  if (address.toLowerCase() === window.userAddress.toLowerCase()) {
-    $("#note").html(
-      `<h5 class="text-center text-warning">Cannot add your own address as exporter!</h5>`
-    );
-    return;
-  }
 
   console.log("Adding exporter:", address, "Info:", info);
 
@@ -836,7 +842,7 @@ async function addExporter() {
 
   try {
     await window.contract.methods
-      .add_Exporter(address, info)
+      .add_Exporter(window.userAddress, info)
       .send({ from: window.userAddress })
 
       .on("transactionHash", function (hash) {
